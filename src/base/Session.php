@@ -8,7 +8,7 @@ class Session extends BaseObject
 
     //channel_type 列表
     const CHANNEL_TYPE_CHALLENGE = 'WEBHOOK_CHALLENGE';
-    const CHANNEL_TYPE_GROUP = "GROUP";
+    const CHANNEL_TYPE_GROUP = 'GROUP';
 
     // 事件列表
     const TYPE_SYSTEM = 255;

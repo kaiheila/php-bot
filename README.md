@@ -63,8 +63,11 @@ cp examples/config.php.sample examples/config.php
 # 运行机器人
 php examples/webhook.php
 ````
-
 4. 在开发者后台，把机器人的地址填入后台。
 
+在做好上述配置后，你也可以试试我们做的一个小机器人【强尼机器人】。
+```bash
+php examples/cyberpunk.php
+````
 
 

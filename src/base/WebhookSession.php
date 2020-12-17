@@ -6,7 +6,6 @@ use kaiheila\api\helpers\Security;
 
 class WebhookSession extends Session
 {
-
     // 加密key, 如果设置，会用该key进行解密
     public $encrypt_key;
     // 如果不设置，则不进行该校验

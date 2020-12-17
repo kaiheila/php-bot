@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__.'/config.php';
 
@@ -14,18 +15,18 @@ $session->on(Session::EVENT_RECEIVE_FRAME, function ($frame) {
     echo "收到frame\n";
 });
 //侦听所有的频道事件
-$session->on('GROUP*', function($frame){
+$session->on('GROUP*', function ($frame) {
     var_dump($frame);
-    echo "收到频道消息";
+    echo '收到频道消息';
 });
 //只侦听频道内的文字消息，并回复
-$session->on('GROUP_1', function($frame){
+$session->on('GROUP_1', function ($frame) {
     var_dump($frame);
-    echo "收到文字消息";
+    echo '收到文字消息';
     $client = new ApiHelper('/api/v3/channel/message', TOKEN, BASE_URL);
     $ret = $client->setBody([
         'channel_id' => $frame->d['target_id'],
-        'content' => "恭喜你完成整个的对接",
+        'content' => '恭喜你完成整个的对接',
         'object_name' => 1,
     ])->send(ApiHelper::POST);
 });
