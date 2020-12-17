@@ -1,6 +1,7 @@
 {
     "name": "kaiheila/api",
     "description": "the php api of kaiheila",
+    "keywords": ["kaiheila", "bot", "api"],
     "type": "library",
     "license": "MIT",
     "authors": [
