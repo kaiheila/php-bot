@@ -1,0 +1,21 @@
+{
+    "name": "kaiheila/api",
+    "description": "the php api of kaiheila",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lishipeng",
+            "email": "lishipeng@chuanyuapp.com"
+        }
+    ],
+    "require": {
+        "php" : ">=7.1",
+        "ext-swoole" : "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "kaiheila\\api\\": "src/"
+        }
+    }
+}

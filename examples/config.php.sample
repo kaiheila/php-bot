@@ -1,0 +1,14 @@
+<?php
+/*********   HTTPAPI相关配置，如果只需要收消息，可不填 *********/
+define('TOKEN', '');
+define('BASE_URL', "https://www.kaiheila.cn");
+
+/**********   WEBHOOK相关, 如果不是WEBHOOK,可不填  ************/
+// 侦听的ip地址
+define('HTTP_SERVER_IP', '0.0.0.0');
+// 侦听的端口
+define('HTTP_SERVER_PORT', '8080');
+//verifyToken, 若不需要verify, 可不填。填上可以防止别人填你的地址，导致你的消息混乱。
+define('VERIFYTOKEN', '');
+//encryptKey, 若不需要加密，可不填。如果有encryptKey会更安全一点。
+define('ENCRYPTKEY', '');
