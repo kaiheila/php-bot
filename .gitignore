@@ -1,3 +1,4 @@
 vendor/
 nohup.out
 examples/config.php
+examples/*.pid

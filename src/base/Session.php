@@ -2,7 +2,7 @@
 
 namespace kaiheila\api\base;
 
-class Session extends BaseObject
+abstract class Session extends BaseObject implements SessionInterface
 {
     const EVENT_RECEIVE_FRAME = 'EVENT-GLOBAL:RECEIVE_FRAME';
 

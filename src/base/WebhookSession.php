@@ -58,4 +58,9 @@ class WebhookSession extends Session
         parent::receiveFrame($frame);
         return $retData;
     }
+
+    public function sendData($data)
+    {
+        throw new \Exception('webhook不能主动发消息给服务端');
+    }
 }

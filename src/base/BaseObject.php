@@ -117,7 +117,10 @@ class BaseObject
     public function log($info, $data = [])
     {
         $datetime = date('Y-m-d H:i:s');
-        $str = "[$datetime] ${info} ".json_encode($data)."\n";
+        if (!is_string($data)) {
+            $data = json_encode($data);
+        }
+        $str = "[$datetime] ${info} ".$data."\n";
         if ($this->logFile) {
             //为了性能应该批量写入，用户可以自行覆写然后优化
             if (!$fp = fopen($logFile, 'a')) {

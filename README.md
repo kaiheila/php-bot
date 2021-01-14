@@ -43,29 +43,32 @@ $client->setQuery(["foo" => "bar"])->send(\kaiheila\api\helpers\ApiHelper::GET);
 
 ```
 
-## 作为composer集成至其它服务内
+##iheila/api 作为composer集成至其它服务内
 
-文档待续
+```
+composer require  kaiheila/api dev-master
+````
+参数上文或example, 直接使用`session->receiveData($data)`来处理数据即可。
 
-
-## 独立webhook机器人
+## 独立机器人
 
 本代码也可以作为一个独立的机器人来运行。
 
 1. git clone git@github.com:kaiheila/php-bot.git
 2. 进入代码目录`cd php-bot`，运行`composer update`
-3. 打开[开发者中心](https://developer.kaiheila.cn/bot), 创建机器人，并更改为webhook模式。
+3. 打开[开发者中心](https://developer.kaiheila.cn/bot), 创建机器人，并更改为webhook/websocket模式。
 4. 更改配置，将开发者中心的配置填入config.php文件中。
 
 ```bash
 cp examples/config.php.sample examples/config.php
 # 按照参数说明，修改config.php的配置, vim examples/config.php
-# 运行机器人
+# 运行webhook机器人
 php examples/webhook.php
+# 运行websocket机器人
 ````
 4. 在开发者后台，把机器人的地址填入后台。
 
-在做好上述配置后，你也可以试试我们做的一个小机器人【强尼机器人】。
+在做好上述配置后，你也可以试试我们做的一个小机器人【强尼机器人】, 注意它是webhook模式，需要配置ip及端口。
 ```bash
 php examples/cyberpunk.php
 ````

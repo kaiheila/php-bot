@@ -1,7 +1,6 @@
 {
     "name": "kaiheila/api",
-    "description": "the php api of kaiheila",
-    "keywords": ["kaiheila", "bot", "api"],
+    "description": "the api of kaiheila",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,8 +10,7 @@
         }
     ],
     "require": {
-        "php" : ">=7.1",
-        "ext-swoole" : "*"
+        "swlib/saber": "^1.0"
     },
     "autoload": {
         "psr-4": {

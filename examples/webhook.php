@@ -10,19 +10,16 @@ use kaiheila\api\helpers\ApiHelper;
 $http = new Swoole\Http\Server(HTTP_SERVER_IP, HTTP_SERVER_PORT);
 $session = new WebhookSession(ENCRYPTKEY, VERIFYTOKEN);
 // 侦听所有的接收frame事件
-$session->on(Session::EVENT_RECEIVE_FRAME, function ($frame) {
-    var_dump($frame);
-    echo "收到frame\n";
+$session->on(Session::EVENT_RECEIVE_FRAME, function ($frame) use ($session) {
+    $session->log('receiveFrame', '收到Frame');
 });
 //侦听所有的频道事件
-$session->on('GROUP*', function ($frame) {
-    var_dump($frame);
-    echo '收到频道消息';
+$session->on('GROUP*', function ($frame) use ($session) {
+    $session->log('receiveGroup', '收到频道消息');
 });
 //只侦听频道内的文字消息，并回复
-$session->on('GROUP_1', function ($frame) {
-    var_dump($frame);
-    echo '收到文字消息';
+$session->on('GROUP_1', function ($frame) use ($session) {
+    $session->log('receiveMsg', $frame);
     $client = new ApiHelper('/api/v3/channel/message', TOKEN, BASE_URL);
     $ret = $client->setBody([
         'channel_id' => $frame->d['target_id'],
