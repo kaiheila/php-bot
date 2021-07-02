@@ -6,6 +6,15 @@
 ## 代码说明
 该包依赖了swoole，请确定你安装了[swoole扩展](https://wiki.swoole.com/#/environment?id=%e5%ae%89%e8%a3%85swoole)。
 
+### docker 
+如果你觉得安装php相关环境比较麻烦，我们也提供了docker来方便你的使用[php-bot](https://hub.docker.com/r/kaiheila/php-bot):
+
+```bash
+docker pull kaiheila/php-bot
+```
+
+### 代码使用
+
 ```php 
 //$session = new WebsocketSession();
 $session = new WebhookSession();
@@ -43,12 +52,18 @@ $client->setQuery(["foo" => "bar"])->send(\kaiheila\api\helpers\ApiHelper::GET);
 
 ```
 
-##iheila/api 作为composer集成至其它服务内
+## kaiheila/api 作为composer集成至其它服务内
 
 ```
 composer require  kaiheila/api dev-master
 ````
 参数上文或example, 直接使用`session->receiveData($data)`来处理数据即可。
+
+**注意：** 在php-fpm中，正常是不支持async-io的，可能会报`async-io must be used in PHP CLI mode`的错误，因此在php-fpm模式下时，需要同步处理事件，示例如下：
+```php
+$session->on($eventName, function(){},  ['async' => false]);
+```
+
 
 ## 独立机器人
 
