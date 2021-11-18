@@ -55,7 +55,7 @@ $client->setQuery(["foo" => "bar"])->send(\kaiheila\api\helpers\ApiHelper::GET);
 ## kaiheila/api 作为composer集成至其它服务内
 
 ```
-composer require  kaiheila/api dev-master
+composer require  kaiheila/api dev-main
 ````
 参数上文或example, 直接使用`session->receiveData($data)`来处理数据即可。
 
