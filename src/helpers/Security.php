@@ -5,7 +5,7 @@ namespace kaiheila\api\helpers;
 class Security
 {
     // decryptData
-    public function decryptData($eData, $encryptKey)
+    public static function decryptData($eData, $encryptKey)
     {
         $eData = base64_decode($eData);
         $iv = substr($eData, 0, 16);
