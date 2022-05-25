@@ -18,9 +18,11 @@ class WebsocketSession extends StateSession
         $this->token = $token;
         $this->baseUrl = $baseUrl;
         $this->sessionFile = $sessionFile;
-        $sessionId = @file_get_contents($sessionFile);
-        if (!empty($sessionId)) {
-            $this->sessionId = trim($sessionId);
+        $str = @file_get_contents($sessionFile);
+        if (!empty($str)) {
+            $data = json_decode($str, true);
+            $this->sessionId = trim($data[0] ?? '');
+            $this->maxSn = intval($data[1] ?? 0);
         }
         parent::__construct($gateWay, $compress);
     }
@@ -29,7 +31,7 @@ class WebsocketSession extends StateSession
     {
         $this->sessionId = $sessionId;
         if ($this->sessionFile) {
-            @file_put_contents($this->sessionFile, $this->sessionId);
+            @file_put_contents($this->sessionFile, json_encode([$this->sessionId, $this->maxSn]));
         }
     }
 
@@ -58,6 +60,7 @@ class WebsocketSession extends StateSession
                 'sessionId' => $this->getSessionId(),
                 'resume' => 1,
             ]);
+            $this->log('resume', $gateWay);
         }
 
         try {

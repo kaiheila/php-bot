@@ -328,6 +328,7 @@ abstract class StateSession extends Session
     public function receivePong($frame)
     {
         $this->log('receivePong', $frame);
+        $this->saveSessionId($this->sessionId);
         foreach ($this->hbTimers as $timer) {
             $this->schedule->removeJob($timer);
         }
