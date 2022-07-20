@@ -123,8 +123,8 @@ class BaseObject
         $str = "[$datetime] ${info} ".$data."\n";
         if ($this->logFile) {
             //为了性能应该批量写入，用户可以自行覆写然后优化
-            if (!$fp = fopen($logFile, 'a')) {
-                echo "打开文件{$logFile}失败！\n";
+            if (!$fp = fopen($this->logFile, 'a')) {
+                echo "打开文件{$this->logFile}失败！\n";
             }
             fwrite($fp, $str);
             fclose($fp);
