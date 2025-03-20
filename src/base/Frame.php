@@ -27,17 +27,20 @@ class Frame
     {
         $frame = new self();
         $frame->s = Event::SIG_PING;
-        $frame->d = [];
         $frame->sn = $sn;
         return $frame;
     }
 
     public function __toString()
     {
-        return json_encode([
-            'd' => $this->d,
+        $data = [
             's' => $this->s,
             'sn' => $this->sn,
-        ]);
+        ];
+        if (!empty($this->d)) {
+            $data['d'] = $this->d;
+        }
+
+        return json_encode($data);
     }
 }
